@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vending Machine QRIS Interaktif</title>
+  
+  <!-- File CSS Eksternal -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Library QR Code Generator (CDN) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+
+  <!-- Container Utama Vending Machine -->
+  <div class="vending-machine">
+    
+    <!-- Bagian Kiri: Rak / Catalog Produk -->
+    <div class="product-shelf">
+      <div class="shelf-header">
+        <h2>PILIH MINUMAN</h2>
+      </div>
+
+      <div class="product-grid" id="product-grid">
+        <!-- Card Produk Di-generate Dinamis via JavaScript -->
+      </div>
+    </div>
+
+    <!-- Bagian Kanan: Panel Kontrol & Layar -->
+    <div class="control-panel">
+      <!-- Logo Header QRIS -->
+      <div class="qris-brand">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/QRIS_logo.svg" alt="Logo QRIS" class="qris-logo-img">
+      </div>
+
+      <!-- Layar Informasi / Screen Display -->
+      <div class="screen-display">
+        <div id="status-title" class="screen-title">SIAP DILAYANI</div>
+        <div id="status-desc" class="screen-desc">Silakan pilih minuman pada rak</div>
+      </div>
+
+      <!-- Slot Pengambilan Produk -->
+      <div class="dispenser-slot">
+        <div class="slot-door">
+          <div id="dispenser-output" class="dispenser-content">
+            <span class="slot-text">[ Tempat Pengambilan ]</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Pop-Up Modal Pembayaran QRIS -->
+  <div class="modal-overlay" id="qris-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/QRIS_logo.svg" alt="Logo QRIS" class="modal-qris-logo">
+        <span class="modal-tag">Pembayaran Nasional</span>
+      </div>
+
+      <div class="modal-body">
+        <h3 id="modal-product-name" class="modal-title">-</h3>
+        <p id="modal-product-price" class="modal-price">Rp 0</p>
+
+        <div class="qr-box">
+          <div id="qrcode-container"></div>
+        </div>
+
+        <p class="qr-instruction">
+          Scan QRIS di atas menggunakan m-Banking atau E-Wallet (GoPay, OVO, DANA, ShopeePay, LinkAja, dll).
+        </p>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-success" onclick="processPayment()">Simulasi Bayar Berhasil</button>
+        <button class="btn btn-danger" onclick="closeModal()">Batal</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- File JavaScript Eksternal -->
+  <script src="script.js"></script>
+</body>
+</html>
